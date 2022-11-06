@@ -57,6 +57,6 @@ def plant_data(request,id):
 
 def sensor(request):
 
-    return render(request, "templates/index.html", {
+    return render(request, "index.html", {
         'sensor': '99',
     })
