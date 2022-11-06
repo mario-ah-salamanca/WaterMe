@@ -38,8 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'channels',
-    'WaterMe_site',
-    'messageapp'
+    'messageapp',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -70,9 +70,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'WaterMe_site.wsgi.application'
 ASGI_APPLICATION = 'WaterMe_site.asgi.application'
-
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
@@ -82,6 +80,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 
 # Password validation
@@ -124,3 +123,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+STATICFILES_DIRS = ( os.path.join(BASE_DIR, "sensor/static/"),)

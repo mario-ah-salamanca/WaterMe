@@ -1,7 +1,7 @@
-from django.urls import path
+from sensor.consumers import ws_message, ws_connect, ws_disconnect
 
-from .consumers import WSConsummer
-
-ws_urlpattern =[
-    path('ws/humidity-temperature/',WSConsummer.as_asgi())
-]
+channel_routing = {
+    'websocket.connect': ws_connect,
+    'websocket.receive': ws_message,
+    'websocket.disconnect': ws_disconnect,
+}

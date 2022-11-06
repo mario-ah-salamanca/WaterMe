@@ -22,4 +22,5 @@ urlpatterns = [
     path('log/',views.message_list),
     path('sensordata/',views.sensor_data),
     path('plants/<int:id>',views.plant_data),
+    url(r'^sensor/', views.sensor, name='sensor')
 ]

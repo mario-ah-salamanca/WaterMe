@@ -1,38 +1,24 @@
+from channels import Group
 
-import asyncio
-import multiprocessing
-import threading
-import time
+def ws_connect(message):
+    print("Someone connected.")
+    path = message['path']                                                      # i.e. /sensor/
 
-from django.contrib.auth.decorators import permission_required
-from django.http import JsonResponse
-from django.shortcuts import render, get_object_or_404, redirect
-from django.views import View
-from channels.generic.websocket import WebsocketConsumer
-import json
-import time
-import board
-import adafruit_dht
-
-#from . import globals
-#globals.initialize()
-
-# Initial the dht device, with data pin connected to:
-dhtDevice = adafruit_dht.DHT11(board.D22)
+    if path == b'/messageapp/':
+        print("Adding new user to sensor group")
+        Group("sensor").add(message.reply_channel)                             # Adds user to group for broadcast
+        message.reply_channel.send({                                            # Reply to individual directly
+           "text": "You're connected to sensor group :) ",
+        })
+    else:
+        print("Strange connector!!")
 
 
-class WSConsumer(WebsocketConsumer):
-    def connect(self):
-        self.accept()
+def ws_message(message):
+    # ASGI WebSocket packet-received and send-packet message types
+    # both have a "text" key for their textual data.
+    print("Received!!" + message['text'])
 
-        temperature_c = dhtDevice.temperature
-        temperature_f = temperature_c * (9 / 5) + 32
-        humidity = dhtDevice.humidity
-        data = {
-            'text': 'PRUEBA',
-            'temperature_c': temperature_c,
-            'temperature_f': temperature_f,
-            'humidity': humidity
-        }
-        self.send(json.dumps(data))
-
+def ws_disconnect(message):
+    print("Someone left us...")
+    Group("sensor").discard(message.reply_channel)
