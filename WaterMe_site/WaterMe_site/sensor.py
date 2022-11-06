@@ -4,7 +4,7 @@
 import time
 import board
 import adafruit_dht
-from . import globals
+import globals
 
 globals.initialize()
 
@@ -22,7 +22,7 @@ while True:
         temperature_c = dhtDevice.temperature
         temperature_f = temperature_c * (9 / 5) + 32
         humidity = dhtDevice.humidity
-        
+
         globals.data['temperature_c'] = temperature_c
         globals.data['temperature_f'] = temperature_f
         globals.data['humidity'] = humidity
