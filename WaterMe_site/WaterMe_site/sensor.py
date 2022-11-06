@@ -4,6 +4,9 @@
 import time
 import board
 import adafruit_dht
+from . import globals
+
+globals.initialize()
 
 # Initial the dht device, with data pin connected to:
 dhtDevice = adafruit_dht.DHT11(board.D22)
@@ -24,6 +27,9 @@ while True:
                 temperature_f, temperature_c, humidity
             )
         )
+        globals.data['temperature_c'] = temperature_c
+        globals.data['temperature_f'] = temperature_f
+        globals.data['humidity'] = humidity
 
     except RuntimeError as error:
         # Errors happen fairly often, DHT's are hard to read, just keep going
