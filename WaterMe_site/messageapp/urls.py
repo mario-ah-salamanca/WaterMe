@@ -18,7 +18,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('',views.index),
+    path('',views.sensor),
     path('log/',views.message_list),
     path('sensordata/',views.sensor_data),
     path('plants/<int:id>',views.plant_data),
