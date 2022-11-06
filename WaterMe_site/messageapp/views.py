@@ -54,3 +54,5 @@ def plant_data(request,id):
     
 
 
+def index(request):
+    return render(request, 'index.html')
