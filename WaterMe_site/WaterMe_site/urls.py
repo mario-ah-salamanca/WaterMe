@@ -18,5 +18,6 @@ from django.urls import path, include
 from . import views
 urlpatterns = [
     path('/home', views.index, name='home'),
+    path('',include('messageapp.urls'))
     #path('admin/', admin.site.urls),
     ]
