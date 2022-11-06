@@ -7,7 +7,8 @@ from django.contrib.auth.decorators import permission_required
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
-import globals
+
+from . import globals
 
 globals.initialize()
 
