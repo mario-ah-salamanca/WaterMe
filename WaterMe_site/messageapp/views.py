@@ -68,7 +68,7 @@ def sensor(request):
         'humidity': humidity
     }
 
-    if self.humidity > 70:
+    if humidity > 70:
         account_sid = 'AC310882514c324de230f567a73c3c4d54'
         auth_token = '6d6e755303ece60689d5bd60cbe89416'
         client = Client(account_sid, auth_token)
@@ -78,7 +78,7 @@ def sensor(request):
             from_='+3197010287585',
             to='+491607070092'
         )
-    elif self.humidity < 60:
+    elif humidity < 60:
         account_sid = 'AC33b4e34a7e5c7ea0d6c9528b349d9cc8'
         auth_token = 'be23ba82eb617c3d17a3839ae0829c82'
         client = Client(account_sid, auth_token)
