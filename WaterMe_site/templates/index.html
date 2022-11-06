@@ -27,6 +27,14 @@
                     </div>
                 </div>
         </div>
-        <script src="" async defer></script>
+        <script src="" async defer>
+            var socket = new WebSocket('ws://localhost:8000/ws/humidity-temperature/');
+            socket.onmessage = function(event){
+                var data = JSON.parse(event.data)
+                console.log(data)
+                document.querySelector('#app').innerText = data.data
+            }
+
+        </script>
     </body>
 </html>

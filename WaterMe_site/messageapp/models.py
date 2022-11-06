@@ -1,5 +1,4 @@
 from django.db import models
-from django_cryptography.fields import encrypt
 from twilio.rest import Client
 from django.core.cache import cache
 
@@ -27,8 +26,8 @@ class SingletonModel(models.Model):
 
 
 class TwilioAccount(SingletonModel):
-    ssid = encrypt(models.CharField(max_length= 80))
-    authToken = encrypt(models.CharField(max_length=80))
+    ssid = models.CharField(max_length= 80)
+    authToken = models.CharField(max_length=80)
 
     def getssid(self):
         return self.ssid
