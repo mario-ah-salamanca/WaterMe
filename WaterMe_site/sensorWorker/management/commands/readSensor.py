@@ -1,6 +1,7 @@
 # SPDX-FileCopyrightText: 2021 ladyada for Adafruit Industries
 # SPDX-License-Identifier: MIT
-from channels import Group
+from asgiref.sync import async_to_sync
+from channels.layers import get_channel_layer
 from django.core.management import BaseCommand
 import time
 import board
@@ -25,7 +26,7 @@ class Command(BaseCommand):
         temperature_c = dhtDevice.temperature
         temperature_f = temperature_c * (9 / 5) + 32
         humidity = dhtDevice.humidity
-
+        channel_layer = get_channel_layer()
         data = {
         'temperature_c': temperature_c,
         'temperature_f': temperature_f,
@@ -33,7 +34,7 @@ class Command(BaseCommand):
             }
         while True:
             out =  "Temp: {:.1f} F / {:.1f} C    Humidity: {}% ".format(temperature_f, temperature_c, humidity)
-            Group("sensor").send(data)
+            async_to_sync(channel_layer.group_send)(data)
             time.sleep(2)
             self.stdout.write("Sensor reading..." + out)
 
