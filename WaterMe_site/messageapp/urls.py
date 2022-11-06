@@ -19,7 +19,6 @@ from . import views
 
 urlpatterns = [
     path('',views.index),
-    path('admin/', admin.site.urls),
     path('log/',views.message_list),
     path('sensordata/',views.sensor_data),
     path('plants/<int:id>',views.plant_data),
