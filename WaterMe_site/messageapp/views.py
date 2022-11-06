@@ -54,11 +54,17 @@ def plant_data(request,id):
         return Response(status=status.HTTP_204_NO_CONTENT)
     
 
-
+import time
+import board
+import adafruit_dht
+dhtDevice = adafruit_dht.DHT11(board.D22)
 def sensor(request):
+    temperature_c = dhtDevice.temperature
+    temperature_f = temperature_c * (9 / 5) + 32
+    humidity = dhtDevice.humidity
     data = {
-        'temperature_c': 0.0,
-        'temperature_f': 0.0,
-        'humidity': 0.0
+        'temperature_c': temperature_c,
+        'temperature_f':temperature_f,
+        'humidity': humidity
     }
     return render(request, "index.html", data )
