@@ -1,16 +1,12 @@
 # SPDX-FileCopyrightText: 2021 ladyada for Adafruit Industries
 # SPDX-License-Identifier: MIT
 
-if __name__ == '__main__' and __package__ == None:
-    from os import sys, path
-    sys.path.append(path.dirname(path.dirname(path.dirname(path.abspath(__file__)))))
-
 import time
 import board
 import adafruit_dht
-from . import globals
+from .globals import initialize
 
-globals.initialize()
+initialize()
 
 # Initial the dht device, with data pin connected to:
 dhtDevice = adafruit_dht.DHT11(board.D22)
