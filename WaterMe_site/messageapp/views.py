@@ -5,7 +5,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from django.shortcuts import render
-
+from twilio.rest import Client
 
 @api_view(['GET', 'POST'])
 def message_list(request):
@@ -67,4 +67,26 @@ def sensor(request):
         'temperature_f':temperature_f,
         'humidity': humidity
     }
+
+    if self.humidity > 70:
+        account_sid = 'AC310882514c324de230f567a73c3c4d54'
+        auth_token = '6d6e755303ece60689d5bd60cbe89416'
+        client = Client(account_sid, auth_token)
+
+        message = client.messages.create(
+            body=f"I AM SATISFIED UWU",
+            from_='+3197010287585',
+            to='+491607070092'
+        )
+    elif self.humidity < 60:
+        account_sid = 'AC33b4e34a7e5c7ea0d6c9528b349d9cc8'
+        auth_token = 'be23ba82eb617c3d17a3839ae0829c82'
+        client = Client(account_sid, auth_token)
+
+        message = client.messages.create(
+            body=f"PLEASE BRO IM DYING!",
+            from_='+3197010287585',
+            to='+491607070092'
+        )
+
     return render(request, "index.html", data )
