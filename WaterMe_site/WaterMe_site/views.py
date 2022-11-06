@@ -28,6 +28,5 @@ def index(request):
         'temperature_c': temperature_c,
         'temperature_f': temperature_f,
         'humidity': humidity
-    }
-    return render(request, 'miprimerapaginaweb.html', data)
-    #return render(request, 'web_page.html', data)
+    } 
+    return render(request, 'web_page.html', data)
