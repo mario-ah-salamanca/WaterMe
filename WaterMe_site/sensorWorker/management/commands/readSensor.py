@@ -14,12 +14,13 @@ import adafruit_dht
 # This may be necessary on a Linux single board computer like the Raspberry Pi,
 # but it will not work in CircuitPython.
 # dhtDevice = adafruit_dht.DHT22(board.D18, use_pulseio=False)
+global dhtDevice 
+dhtDevice = adafruit_dht.DHT11(board.D22)
 
 #The class must be named Command, and subclass BaseCommand
 class Command(BaseCommand):
     # Show this when the user types help
     help = "Reading sensor and sending over Channel."
-    dhtDevice = adafruit_dht.DHT11(board.D22)
 
     # A command must define handle()
     def handle(self, *args, **options):
