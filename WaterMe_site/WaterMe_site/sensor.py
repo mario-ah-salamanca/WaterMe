@@ -22,14 +22,17 @@ while True:
         temperature_c = dhtDevice.temperature
         temperature_f = temperature_c * (9 / 5) + 32
         humidity = dhtDevice.humidity
+        
+        globals.data['temperature_c'] = temperature_c
+        globals.data['temperature_f'] = temperature_f
+        globals.data['humidity'] = humidity
+
         print(
             "Temp: {:.1f} F / {:.1f} C    Humidity: {}% ".format(
                 temperature_f, temperature_c, humidity
             )
         )
-        globals.data['temperature_c'] = temperature_c
-        globals.data['temperature_f'] = temperature_f
-        globals.data['humidity'] = humidity
+        
 
     except RuntimeError as error:
         # Errors happen fairly often, DHT's are hard to read, just keep going
