@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-)mzl*-g&mxn6)5sw$=g#5z+zeq!tqf&tnpyg_k)vch&ac^yni+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["192.168.0.116"]
 
 
 # Application definition
@@ -54,7 +54,7 @@ ROOT_URLCONF = 'WaterMe_site.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'WaterMe_site/template')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
