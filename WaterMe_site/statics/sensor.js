@@ -5,7 +5,7 @@ $(function() {
 
     chatsock.onopen = function() {
            console.log("Connected!");
-           $('#sensor').text("Connected!");
+           ('#sensor').text("Connected!");
            chatsock.send("Connected!");
     };
 
