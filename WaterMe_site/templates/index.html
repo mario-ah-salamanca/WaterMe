@@ -16,40 +16,41 @@
         <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
         <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
     </head>
-    <body>
+    <body background="images/plantas.jpg">
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <body background="images/plantas.jpg" >
+        <p style="font-size:2em; color:white; text-align:center;">Jacobs Hack2022</p>
+        <h1 style= "font-size:4rem; background-color:rgb(79, 180, 79); color:rgb(0, 0, 0); text-align: center;">Go Green</h1>
+        <h2 style= "font-size:2em; background-color:green; color:rgb(0, 0, 0); text-align: center;">Welcome to our Project</h2>
+        <p style="font-size:6em; color:greenyellow; text-align:center">Water</p>
+        
+        
+        
+         <h4 style="font-size:2em; color:aqua">Welcome</h4>
+        
+        
+        <ol>
+            <li>Select the Plant</li>
+            <li>Insert the sensor inside the plant</li>
+            <li>Enter to the website</li>
+            <li>Wait for the result</li>
+        </ol>
     
-            <p style="font-size:2em; color:white; text-align:center;">Jacobs Hack2022</p>
-            <h1 style= "font-size:4rem; background-color:rgb(79, 180, 79); color:rgb(0, 0, 0); text-align: center;">Go Green</h1>
-            <h2 style= "font-size:2em; background-color:green; color:rgb(0, 0, 0); text-align: center;">Welcome to our Project</h2>
-            <p style="font-size:6em; color:greenyellow; text-align:center">Water</p>
-            
-            
-            
-             <h4 style="font-size:2em; color:aqua">Welcome</h4>
-            
-            
-            <ol>
-                <li>Select the Plant</li>
-                <li>Insert the sensor inside the plant</li>
-                <li>Enter to the website</li>
-                <li>Wait for the result</li>
-            </ol>
+        <div class="container">
+            <div class="row">
+                <div id="sensor">
+    
+                    <h1>Sensor Reading</h1>
+                    Temperature in Celcius: {{temperature_c}} <br>
+                    Temperature in Fahrenheits: {{temperature_f}} <br>
+                    Humidity: {{humidity}}
+                </div>
+    
+    
 
-            <div class="container">
-                <div class="row">
-                    <div id="sensor">
-
-                        <h1>Sensor Reading</h1>
-                        Temperature in Celcius: {{temperature_c}} <br>
-                        Temperature in Fahrenheits: {{temperature_f}} <br>
-                        Humidity: {{humidity}}
-                    </div>
-                <div class="refresh">
+                        <div class="refresh">
                     <button onclick="window.location.reload()"> 
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
@@ -58,11 +59,11 @@
                     </button> 
                 </div>
                 </div>
-        </div>
             
             <audio controls > <!--Creat sound button, extra decide if autoplay or not-->
                 <source src="LaPlanta.mp3"> <!--Select the source-->
             </audio>
-            
+            <img src="images/PT.png" height="200">
+        <img src="images/S1.png" aling="left">
     </body>
 </html>
