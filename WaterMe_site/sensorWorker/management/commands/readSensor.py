@@ -35,7 +35,7 @@ class Command(BaseCommand):
             }
         while True:
             out =  "Temp: {:.1f} F / {:.1f} C    Humidity: {}% ".format(temperature_f, temperature_c, humidity)
-            async_to_sync(channel_layer.group_send)(data)
+            async_to_sync(channel_layer.group_send)("sensor",data)
             time.sleep(2)
             self.stdout.write("Sensor reading..." + out)
 
