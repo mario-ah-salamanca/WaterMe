@@ -5,7 +5,6 @@ from django.core.management import BaseCommand
 import time
 import board
 import adafruit_dht
-import globals
 
 
 # Initial the dht device, with data pin connected to:
@@ -27,13 +26,14 @@ class Command(BaseCommand):
         temperature_f = temperature_c * (9 / 5) + 32
         humidity = dhtDevice.humidity
 
-        globals.data['temperature_c'] = 50.0
-        globals.data['temperature_f'] = 50.0
-        globals.data['humidity'] = 50.0
+        data = {
+        'temperature_c': temperature_c,
+        'temperature_f': temperature_f,
+        'humidity': humidity
+            }
         while True:
-            data =  "Temp: {:.1f} F / {:.1f} C    Humidity: {}% ".format(temperature_f, temperature_c, humidity)
+            out =  "Temp: {:.1f} F / {:.1f} C    Humidity: {}% ".format(temperature_f, temperature_c, humidity)
             Group("sensor").send(data)
             time.sleep(2)
-            x = x + 1
-            self.stdout.write("Sensor reading..." + data)
+            self.stdout.write("Sensor reading..." + out)
 

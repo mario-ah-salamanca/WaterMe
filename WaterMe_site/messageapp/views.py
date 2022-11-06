@@ -56,7 +56,9 @@ def plant_data(request,id):
 
 
 def sensor(request):
-
-    return render(request, "index.html", {
-        'sensor': '99',
-    })
+    data = {
+        'temperature_c': 0.0,
+        'temperature_f': 0.0,
+        'humidity': 0.0
+    }
+    return render(request, "index.html", data )
